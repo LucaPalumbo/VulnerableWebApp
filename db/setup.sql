@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS Utenti (
+	id INTEGER PRIMARY KEY,
+   	username TEXT NOT NULL,
+	email TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Note (
+	id INTEGER PRIMARY KEY,
+   	id_utente INTEGER NOT NULL,
+	titolo TEXT NOT NULL,
+    testo TEXT NOT NULL,
+    FOREIGN KEY (id_utente) 
+        REFERENCES Utenti (id)
+        ON DELETE CASCADE 
+        ON UPDATE NO ACTION
+
+);

@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <title>Home</title>
+        <style>
+            body {
+    background-color: #B3E5FC;
+    border-radius: 10px
+}
+
+.card {
+    width: 400px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff
+}
+
+.stats {
+    background: #f2f5f8 !important;
+    color: #000 !important
+}
+
+.articles {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number1 {
+    font-weight: 500
+}
+
+.followers {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number2 {
+    font-weight: 500
+}
+
+.rating {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number3 {
+    font-weight: 500
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+        </style>
+    </head>
+    <body>
+        
+        <div class="container mt-5 d-flex justify-content-center">
+            <div class="card p-3">
+                <div class="d-flex align-items-center">
+                    <div class="image"> <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155"> </div>
+                    <div class="ml-3 w-100">
+                        <h4 class="mb-0 mt-0">{{ username }}</h4> <span> {{ email }} </span>
+                        <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                            <!--
+                            <div class="d-flex flex-column"> <span class="articles">Articles</span> <span class="number1">38</span> </div>
+                            <div class="d-flex flex-column"> <span class="followers">Followers</span> <span class="number2">980</span> </div>
+                            <div class="d-flex flex-column"> <span class="rating">Rating</span> <span class="number3">8.9</span> </div>
+                            -->
+                        </div>
+                        <div class="button mt-2 d-flex flex-row align-items-center"> <form method="get", action="/addNote"><button action="submit" class="btn btn-sm btn-outline-primary w-100">Aggiungi Nota</button> </form> <form method="get" action="/logout" ><button action="submit" class="btn btn-sm btn-primary w-100 ml-2">Logout</button></form> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    {% for id,title,text in NoteList %}
+    <div class="card">
+  
+        <h1>{{ title }}</h1>
+        <p class="price">n. {{ id }}</p>
+        <p>{{ text | safe }}</p>
+        <form action="/shareNote/{{ id }}"><button action="submit">Codividi nota</button></form>
+      </div>
+    {% endfor %}
+
+</html>
